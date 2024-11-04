@@ -167,12 +167,12 @@ public:
 
 int main() {
     const int roundsToWin = 1;
-    std::array<Character, 2> characters{Character{"Warrior", 100, 20},
-                             Character{"Mage", 80, 50}};
-    std::array<Weapon, 4> weapons{Weapon{"Sword", 10, 0.2},
-                          Weapon{"Bow", 5, 0.8},
-                          Weapon{"Staff", 2, 1},
-                          Weapon{"Daggers", 8, 0.5}};
+    std::array<Character, 2> characters{Character{"Warrior", 100.f, 20.f},
+                             Character{"Mage", 80.f, 50.f}};
+    std::array<Weapon, 4> weapons{Weapon{"Sword", 10.f, 0.2f},
+                          Weapon{"Bow", 5.f, 0.8f},
+                          Weapon{"Staff", 2.f, 1.f},
+                          Weapon{"Daggers", 8.f, 0.5f}};
 
     std::array<Player, 2> players{Player{"Tik", characters[0], weapons[0]},
                                   Player{"Tok", characters[1], weapons[2]}};
