@@ -1,57 +1,79 @@
 #include <iostream>
 #include <array>
+#include <utility>
+#include <vector>
+#include <string>
+//#include "generated/include/Helper.h"
 
-#include <Helper.h>
+// TODO: implement consumables
+//class Consumable {
+//private:
+//    std::string name{"unknown_consumable"};
+//};
+
+// TODO: Select a weapon from a selection given to the user
+class Weapon {
+private:
+    std::string name{"unknown_weapon"};
+    float damage{10.f};
+    float hitChance{1.f};
+
+public:
+    Weapon() = default;
+    Weapon(std::string name, float damage, float hitChance) : name(std::move(name)), damage(damage), hitChance(hitChance) {}
+
+
+    ~Weapon() = default;
+};
+
+// TODO: Select a character from a selection given to the user
+class Character {
+private:
+    std::string name{"unknown_character"};
+    float health{100.f};
+    float mana{100.f};
+
+public:
+    Character() = default;
+    Character(std::string name, float health, float mana)
+        : name(std::move(name)), health(health), mana(mana) {}
+
+
+    ~Character() = default;
+};
+
+class Player {
+private:
+    std::string name{"unknown_player"};
+    Character character{};
+    Weapon weapon{};
+    // no. of wins in a duel
+    int wins{0};
+
+public:
+    Player() = default;
+    Player(std::string name, const Character &character, const Weapon &weapon, int wins = 0)
+        : name(std::move(name)), character(character), weapon(weapon) {}
+
+    ~Player() = default;
+};
+
+class Game {
+private:
+    // players in game
+    std::array<Player, 2> players{};
+    // no. of wins to win a duel
+    int minWins{3};
+
+public:
+    Game() = default;
+    Game(std::array<Player, 2> players, int minWins = 3)
+        : players(players), minWins(minWins) {}
+
+    ~Game() = default;
+};
 
 int main() {
-    std::cout << "Hello, world!\n";
-    std::array<int, 100> v{};
-    int nr;
-    std::cout << "Introduceți nr: ";
-    /////////////////////////////////////////////////////////////////////////
-    /// Observație: dacă aveți nevoie să citiți date de intrare de la tastatură,
-    /// dați exemple de date de intrare folosind fișierul tastatura.txt
-    /// Trebuie să aveți în fișierul tastatura.txt suficiente date de intrare
-    /// (în formatul impus de voi) astfel încât execuția programului să se încheie.
-    /// De asemenea, trebuie să adăugați în acest fișier date de intrare
-    /// pentru cât mai multe ramuri de execuție.
-    /// Dorim să facem acest lucru pentru a automatiza testarea codului, fără să
-    /// mai pierdem timp de fiecare dată să introducem de la zero aceleași date de intrare.
-    ///
-    /// Pe GitHub Actions (bife), fișierul tastatura.txt este folosit
-    /// pentru a simula date introduse de la tastatură.
-    /// Bifele verifică dacă programul are erori de compilare, erori de memorie și memory leaks.
-    ///
-    /// Dacă nu puneți în tastatura.txt suficiente date de intrare, îmi rezerv dreptul să vă
-    /// testez codul cu ce date de intrare am chef și să nu pun notă dacă găsesc vreun bug.
-    /// Impun această cerință ca să învățați să faceți un demo și să arătați părțile din
-    /// program care merg (și să le evitați pe cele care nu merg).
-    ///
-    /////////////////////////////////////////////////////////////////////////
-    std::cin >> nr;
-    /////////////////////////////////////////////////////////////////////////
-    for(int i = 0; i < nr; ++i) {
-        std::cout << "v[" << i << "] = ";
-        std::cin >> v[i];
-    }
-    std::cout << "\n\n";
-    std::cout << "Am citit de la tastatură " << nr << " elemente:\n";
-    for(int i = 0; i < nr; ++i) {
-        std::cout << "- " << v[i] << "\n";
-    }
-    ///////////////////////////////////////////////////////////////////////////
-    /// Pentru date citite din fișier, NU folosiți tastatura.txt. Creați-vă voi
-    /// alt fișier propriu cu ce alt nume doriți.
-    /// Exemplu:
-    /// std::ifstream fis("date.txt");
-    /// for(int i = 0; i < nr2; ++i)
-    ///     fis >> v2[i];
-    ///
-    ///////////////////////////////////////////////////////////////////////////
-    ///                Exemplu de utilizare cod generat                     ///
-    ///////////////////////////////////////////////////////////////////////////
-    Helper helper;
-    helper.help();
-    ///////////////////////////////////////////////////////////////////////////
+
     return 0;
 }
