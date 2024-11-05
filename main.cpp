@@ -66,6 +66,9 @@ public:
     void setHealth(const float offset) {
         health += offset;
     }
+    void setMana(const float offset) {
+        mana += offset;
+    }
 
     ~Character() = default;
 };
@@ -77,11 +80,12 @@ private:
     Weapon weapon{};
     // no. of wins in a duel
     int wins{0};
+    const float restingHealthGain{10};
 
 public:
     Player() = default;
-    Player(std::string name, const Character &character, const Weapon &weapon, int wins = 0)
-        : name(std::move(name)), character(character), weapon(weapon), wins(wins) {};
+    Player(std::string name, const Character &character, const Weapon &weapon, int wins = 0, float restingHealthGain = 10)
+        : name(std::move(name)), character(character), weapon(weapon), wins(wins), restingHealthGain(restingHealthGain) {};
 
     Player(const Player& player) {
         this->name = player.name;
@@ -118,6 +122,12 @@ public:
             << ".\n" << target.name << " health: " << target.character.getHealth() << ".\n\n";
     }
 
+    void rest() {
+        this->character.setHealth(+restingHealthGain);
+        std::cout << this->name << " healed.\n New health: " << this->character.getHealth() << "\n\n";
+    }
+
+
     ~Player() = default;
 };
 
@@ -140,16 +150,27 @@ public:
         return out;
     }
 
+    // simulate a simple playing style with only basic attacks and rarely
     void startGame() {
+        int turn = 0;
         while(players[0].getCharacter().getHealth() > 0 && players[1].getCharacter().getHealth() > 0) {
+            std::this_thread::sleep_for(0.5s);
+            turn++;
+            if (turn % 6 == 5) {
+                players[0].rest();
+                std::this_thread::sleep_for(0.5s);
+                players[1].rest();
+                std::cout << "------------- Turn end " << turn <<"-------------\n\n";
+                continue;
+            }
             players[0].basicAttack(players[1]);
             std::this_thread::sleep_for(0.5s);
             if (players[1].getCharacter().getHealth() <= 0) {
                 break;
             }
             players[1].basicAttack(players[0]);
-            std::this_thread::sleep_for(1.5s);
-            std::cout << "------------- Turn end -------------\n\n";
+            std::this_thread::sleep_for(1.2s);
+            std::cout << "------------- Turn end " << turn <<"-------------\n\n";
         }
         if (players[0].getCharacter().getHealth() <= 0 && players[1].getCharacter().getHealth() <= 0) {
             std::cout << "Draw\n";
