@@ -42,11 +42,16 @@ private:
     std::string name{"unknown_character"};
     float health{100.f};
     float mana{100.f};
+    float maxHealth{100.f};
+    float maxMana{100.f};
 
 public:
     Character() = default;
     Character(std::string name, float health, float mana)
-        : name(std::move(name)), health(health), mana(mana) {};
+        : name(std::move(name)), health(health), mana(mana) {
+        this->maxHealth = health;
+        this->maxMana = mana;
+    };
     Character& operator=(const Character& character) = default;
 
     friend std::ostream&  operator<<(std::ostream &out, const Character& character) {
@@ -65,9 +70,15 @@ public:
     }
     void setHealth(const float offset) {
         health += offset;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
     }
     void setMana(const float offset) {
         mana += offset;
+        if (mana > maxMana) {
+            mana = maxMana;
+        }
     }
 
     ~Character() = default;
@@ -80,12 +91,12 @@ private:
     Weapon weapon{};
     // no. of wins in a duel
     int wins{0};
-    const float restingHealthGain{10};
+    const float restingGain{10};
 
 public:
     Player() = default;
-    Player(std::string name, const Character &character, const Weapon &weapon, int wins = 0, float restingHealthGain = 10)
-        : name(std::move(name)), character(character), weapon(weapon), wins(wins), restingHealthGain(restingHealthGain) {};
+    Player(std::string name, const Character &character, const Weapon &weapon, int wins = 0, float restingGain = 10)
+        : name(std::move(name)), character(character), weapon(weapon), wins(wins), restingGain(restingGain) {};
 
     Player(const Player& player) {
         this->name = player.name;
@@ -123,10 +134,11 @@ public:
     }
 
     void rest() {
-        this->character.setHealth(+restingHealthGain);
-        std::cout << this->name << " healed.\n New health: " << this->character.getHealth() << "\n\n";
+        this->character.setHealth(+restingGain);
+        std::cout << this->name << " rested.\nNew health: " << this->character.getHealth() << "\n";
+        this->character.setMana(+restingGain);
+        std::cout << "New mana: " << this->character.getHealth() << "\n\n";
     }
-
 
     ~Player() = default;
 };
@@ -153,6 +165,7 @@ public:
     // simulate a simple playing style with only basic attacks and rarely
     void startGame() {
         int turn = 0;
+        std::cout << players[0] << "\t\t VS.\n" << players[1] << "\n" << "\t\tFIGHT!\n\n";
         while(players[0].getCharacter().getHealth() > 0 && players[1].getCharacter().getHealth() > 0) {
             std::this_thread::sleep_for(0.5s);
             turn++;
