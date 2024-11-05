@@ -156,16 +156,20 @@ public:
         : players(std::move(players)), minWins(minWins) {};
 
     friend std::ostream&  operator<<(std::ostream &out, const Game& game) {
-        out << "Player 1: " << game.players[0].getName() << "\n";
-        out << "Player 2: " << game.players[1].getName() << "\n";
-        out << "Rounds to win game: " << game.minWins << "\n";
+        out << "Game type: Best of " << game.minWins * 2 - 1 << "\n";
+        out << game.players[0];
+        out << "\t\t VS.\n";
+        out << game.players[1];
+        out << "\n" << "\t\tFIGHT!\n\n";
+
         return out;
     }
 
     // simulate a simple playing style with only basic attacks and rarely
     void startGame() {
         int turn = 0;
-        std::cout << players[0] << "\t\t VS.\n" << players[1] << "\n" << "\t\tFIGHT!\n\n";
+        // starting message
+        std::cout << *this;
         while(players[0].getCharacter().getHealth() > 0 && players[1].getCharacter().getHealth() > 0) {
             std::this_thread::sleep_for(0.5s);
             turn++;
