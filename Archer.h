@@ -7,6 +7,7 @@ class Archer final : public Character {
 public:
     explicit Archer(std::string name);
     void specialAbility() const override;
+    void basicAttack() const override;
 };
 
 #endif // ARCHER_H

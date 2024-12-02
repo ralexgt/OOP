@@ -3,6 +3,7 @@
 #include "Swordsman.h"
 #include "Player.h"
 #include "Game.h"
+#include "Exceptions.h"
 #include <memory>
 #include <iostream>
 

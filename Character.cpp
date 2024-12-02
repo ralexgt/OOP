@@ -1,14 +1,14 @@
 #include "Character.h"
 
-Character::Character(std::string name, float health)
+Character::Character(std::string name, const float health)
     : name(std::move(name)), health(health), maxHealth(health) {}
 
-void Character::takeDamage(float damage) {
+void Character::takeDamage(const float damage) {
     health -= damage;
     if (health < 0) health = 0;
 }
 
-void Character::heal(float amount) {
+void Character::heal(const float amount) {
     health += amount;
     if (health > maxHealth) health = maxHealth;
 }

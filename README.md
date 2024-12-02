@@ -2,7 +2,11 @@
 
 ## Descriere proiect
 1v1 duel este un joc turn based intre 2 jucatori. Jucatorii isi vor putea alege unul dintre caracterele prestabilite
-cu atacuri si eventual consumabile (potiuni de viata spre exemplu).
+cu atacuri si abilitati speciale unice.
+
+Aplicatia se bazeaza pe principiile de programare orientata pe obiect. Jocul este stabilit si inceput de clasa Game.
+Prin aceasta clasa se adauga 2 jucatori prin clasa Player care au ca referinta un caracter definit prin clasa Character
+si clasele derivate Swordsman, Mage, Archer.
 
 ## Milestone #0
 

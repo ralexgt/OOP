@@ -10,7 +10,7 @@ private:
 
 public:
     void addPlayer(const Player& player);
-    void startGame();
+    void startGame() const;
 };
 
 #endif // GAME_H

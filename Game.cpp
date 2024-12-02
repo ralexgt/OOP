@@ -1,13 +1,12 @@
 #include "Game.h"
 #include "Player.h"
 #include <iostream>
-#include <exception>
 
 void Game::addPlayer(const Player& player) {
     players.push_back(player);
 }
 
-void Game::startGame() {
+void Game::startGame() const {
     if (players.size() < 2)
         throw std::runtime_error("Not enough players to start the game.");
 
@@ -18,4 +17,6 @@ void Game::startGame() {
 
     players[0].useSpecialAbility();
     players[1].useSpecialAbility();
+    players[0].useBasicAttack();
+    players[1].useBasicAttack();
 }

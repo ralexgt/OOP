@@ -12,6 +12,7 @@ private:
 public:
     Player(std::string name, std::shared_ptr<Character> character);
     void useSpecialAbility() const;
+    void useBasicAttack() const;
 
     [[nodiscard]] const std::string& getName() const;
     [[nodiscard]] float getHealth() const;

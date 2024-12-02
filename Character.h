@@ -20,7 +20,8 @@ public:
     [[nodiscard]] float getHealth() const;
     [[nodiscard]] const std::string& getName() const;
 
-    virtual void specialAbility() const = 0; // Pure virtual function
+    virtual void specialAbility() const = 0;
+    virtual void basicAttack() const = 0;
 };
 
 #endif // CHARACTER_H

@@ -6,6 +6,9 @@ Player::Player(std::string name, std::shared_ptr<Character> character)
 void Player::useSpecialAbility() const {
     character->specialAbility();
 }
+void Player::useBasicAttack() const {
+    character->basicAttack();
+}
 
 const std::string& Player::getName() const {
     return name;
