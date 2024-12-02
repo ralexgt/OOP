@@ -19,6 +19,7 @@ int main() {
         game.addPlayer(player2);
 
         game.startGame();
+
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";
     }
