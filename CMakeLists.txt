@@ -43,8 +43,14 @@ include(cmake/Options.cmake)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
-    main.cpp
-    generated/src/Helper.cpp
+        main.cpp
+        generated/src/Helper.cpp
+        Character.cpp
+        Archer.cpp
+        Mage.cpp
+        Swordsman.cpp
+        Player.cpp
+        Game.cpp
 )
 
 include(cmake/CompilerFlags.cmake)
