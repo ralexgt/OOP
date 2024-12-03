@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Exceptions.h"
 #include "Player.h"
 #include <iostream>
 
@@ -7,8 +8,8 @@ void Game::addPlayer(const Player& player) {
 }
 
 void Game::startGame() const {
-    if (players.size() < 2)
-        throw std::runtime_error("Not enough players to start the game.");
+    if (players.size() != 2)
+        throw GameException("Not enough players to start the game.");
 
     std::cout << "Starting the game with " << players.size() << " players.\n";
     for (const auto& player : players) {

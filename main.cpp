@@ -21,7 +21,7 @@ int main() {
 
         game.startGame();
 
-    } catch (const std::exception& e) {
+    } catch (const GameException e) {
         std::cerr << "Error: " << e.what() << "\n";
     }
 
