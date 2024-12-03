@@ -14,8 +14,8 @@ public:
     Character(std::string name, float health);
     virtual ~Character() = default;
 
-//    void takeDamage(float damage);
-//    void heal(float amount);
+    void takeDamage(float damage);
+    void heal(float amount);
 
     [[nodiscard]] float getHealth() const;
     [[nodiscard]] const std::string& getName() const;
