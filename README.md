@@ -6,7 +6,8 @@ cu atacuri si abilitati speciale unice.
 
 Aplicatia se bazeaza pe principiile de programare orientata pe obiect. Jocul este stabilit si inceput de clasa Game.
 Prin aceasta clasa se adauga 2 jucatori prin clasa Player care au ca referinta un caracter definit prin clasa Character
-si clasele derivate Swordsman, Mage, Archer.
+si clasele derivate Swordsman, Mage, Archer. Aceste caractere implementeaza atacuri sau actiuni pe care sa le 
+foloseasca in timpul duelului.
 
 ## Milestone #0
 
@@ -33,8 +34,8 @@ si clasele derivate Swordsman, Mage, Archer.
 ## Milestone #2
 
 #### Cerințe
-- [ ] separarea codului din clase în `.h` (sau `.hpp`) și `.cpp`
-- [ ] moșteniri:
+- [] separarea codului din clase în `.h` (sau `.hpp`) și `.cpp`
+- [] moșteniri:
   - minim o clasă de bază și **3 clase derivate** din aceeași ierarhie
   - ierarhia trebuie să fie cu bază proprie, nu derivată dintr-o clasă predefinită
   - [ ] funcții virtuale (pure) apelate prin pointeri de bază din clasa care conține atributul de tip pointer de bază
