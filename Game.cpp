@@ -53,13 +53,13 @@ void Game::characterSelection() {
       std::cin >> character_choice;
       if (character_choice == "Swordsman") {
         const auto swordsman = std::make_shared<Swordsman>(name);
-        players.push_back(Player(name, swordsman));
+        players.push_back(Player(name, swordsman->clone()));
       } else if (character_choice == "Archer") {
         const auto archer = std::make_shared<Archer>(name);
-        players.push_back(Player(name, archer));
+        players.push_back(Player(name, archer->clone()));
       } else if (character_choice == "Mage") {
         const auto archer = std::make_shared<Mage>(name);
-        players.push_back(Player(name, archer));
+        players.push_back(Player(name, archer->clone()));
       } else {
         throw InvalidCharacterException();
       }
