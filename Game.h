@@ -26,6 +26,11 @@ public:
         display();
     }
 
+    // Assignment operator using copy-and-swap idiom
+    Game& operator=(Game& other);
+    // Swap
+    friend void swap(Game& first, Game& second) noexcept;
+    // << operator
     friend std::ostream& operator<<(std::ostream& os, const Game& game);
 };
 

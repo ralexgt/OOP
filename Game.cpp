@@ -9,13 +9,24 @@
 
 std::vector<Player> Game::players;
 
+Game& Game::operator=(Game& other) {
+  swap(*this, other);
+  return *this;
+}
+void swap(Game& first, Game& second) noexcept {
+  using std::swap;
+  for (int i = 0; i < 2; ++i) {
+    swap(first.players[i], second.players[i]);
+  }
+}
+
 void Game::gameStatus() {
     std::cout << "Game status: \n";
     if (players.size() == 0) {
         std::cout << "Clean state\n";
     }
     for (unsigned long i = 0; i < players.size(); i++) {
-      std::cout << players[i].getName() << ": " << players[i].getHealth() << "heath, "
+      std::cout << players[i].getName() << ": " << players[i].getHealth() << " heath, "
     << players[i].getMana() << " mana\n";
     }
     std::cout << "--------------\n";
