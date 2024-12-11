@@ -66,7 +66,7 @@ void Game::characterSelection() {
       player_count++;
     } catch (const BaseGameException& e) {
       std::cerr << e.what() << '\n';
-      exit(1);
+      exit(0);
     }
   } while (player_count < 2);
 }
