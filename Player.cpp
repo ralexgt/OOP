@@ -17,3 +17,6 @@ const std::string& Player::getName() const {
 float Player::getHealth() const {
     return character->getHealth();
 }
+float Player::getMana() const {
+    return character->getMana();
+}

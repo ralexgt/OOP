@@ -5,33 +5,35 @@
 #include <string>
 #include <utility>
 
-class PlayerException final : public std::exception {
-private:
-    std::string msg ={"Invalid player"} ;
+/// Base exception to derive all other exceptions from
+class BaseGameException : public std::exception {
 public:
-    explicit PlayerException(std::string  message) : msg(std::move(message)) {}
-    [[nodiscard]] const char* what() const noexcept override {
-        return msg.c_str();
+    const char* what() const noexcept override {
+        return "Base game exception";
     }
 };
 
-class GameException final : public std::exception {
-private:
-    std::string msg{"There must be exact 2 players in a game."};
+// Player name can't be empty exception
+class NonNullNameException final : public BaseGameException {
 public:
-    explicit GameException(std::string  message) : msg(std::move(message)) {}
-    [[nodiscard]] const char* what() const noexcept override {
-        return msg.c_str();
+    const char* what() const noexcept override {
+        return "Must select a player name, it can not be empty.";
     }
 };
 
-class CharacterException final : public std::exception {
-private:
-    std::string msg{"Invalid character"};
+// Other character than the 3 predefined were chosen
+class InvalidCharacterException final : public BaseGameException {
 public:
-    explicit CharacterException(std::string  message) : msg(std::move(message)) {}
-    [[nodiscard]] const char* what() const noexcept override {
-        return msg.c_str();
+    const char* what() const noexcept override {
+        return "Must input \"Swordsman\", \"Archer\" or \"Mage\"";
+    }
+};
+
+// game state should never happen
+class InvalidGameState final : public BaseGameException {
+public:
+    const char* what() const noexcept override {
+        return "Got into a broken game state";
     }
 };
 

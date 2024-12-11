@@ -1,7 +1,7 @@
 #include "Character.h"
 
-Character::Character(std::string name, const float health)
-    : name(std::move(name)), health(health), maxHealth(health) {}
+Character::Character(std::string name, const float health, const float mana)
+    : name(std::move(name)), health(health), mana(mana), maxHealth(health), maxMana(mana) {}
 
 //void Character::takeDamage(const float damage) {
 //    health -= damage;
@@ -16,7 +16,16 @@ Character::Character(std::string name, const float health)
 float Character::getHealth() const {
     return health;
 }
+float Character::getMana() const {
+    return mana;
+}
 
 const std::string& Character::getName() const {
     return name;
+}
+
+std::ostream& operator<<(std::ostream& os, const Character& character) {
+    std::cout << character.getName() << " health: " << character.getHealth()
+            << std::endl;
+  return os;
 }

@@ -8,6 +8,8 @@ public:
     explicit Mage(std::string name);
     void specialAbility() const override;
     void basicAttack() const override;
+
+    std::shared_ptr<Character> clone() const override;
 };
 
 #endif // MAGE_H

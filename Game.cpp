@@ -1,23 +1,75 @@
 #include "Game.h"
 #include "Exceptions.h"
 #include "Player.h"
+#include "Swordsman.h"
+#include "Archer.h"
+#include "Mage.h"
+
 #include <iostream>
 
-void Game::addPlayer(const Player& player) {
-    players.push_back(player);
+std::vector<Player> Game::players;
+
+void Game::gameStatus() {
+    std::cout << "Game status: \n";
+    if (players.size() == 0) {
+        std::cout << "Clean state\n";
+    }
+    for (unsigned long i = 0; i < players.size(); i++) {
+      std::cout << players[i].getName() << ": " << players[i].getHealth() << "heath, "
+    << players[i].getMana() << " mana\n";
+    }
+    std::cout << "--------------\n";
 }
 
-void Game::startGame() const {
-    if (players.size() != 2)
-        throw GameException("Not enough players to start the game.");
+void Game::characterSelection() {
+  std::string name = "";
+  std::string character_choice = "";
+  int player_count = 0;
+  players.clear();
 
-    std::cout << "Starting the game with " << players.size() << " players.\n";
-    for (const auto& player : players) {
-        std::cout << player.getName() << "'s health: " << player.getHealth() << "\n";
+  do {
+    try {
+      std::cout << "\n Player " << player_count + 1 << " choose your name: \n";
+      std::cout << "Name: ";
+      std::cin >> name;
+      if (name == "") {
+        throw NonNullNameException();
+      }
+      std::cout << name << " choose your character: \n";
+      std::cout << "1. Swordsman\n";
+      std::cout << "2. Archer\n";
+      std::cout << "3. Mage\n";
+      std::cin >> character_choice;
+      if (character_choice == "Swordsman") {
+        const auto swordsman = std::make_shared<Swordsman>(name);
+        players.push_back(Player(name, swordsman));
+      } else if (character_choice == "Archer") {
+        const auto archer = std::make_shared<Archer>(name);
+        players.push_back(Player(name, archer));
+      } else if (character_choice == "Mage") {
+        const auto archer = std::make_shared<Mage>(name);
+        players.push_back(Player(name, archer));
+      } else {
+        throw InvalidCharacterException();
+      }
+      player_count++;
+    } catch (const BaseGameException& e) {
+      std::cerr << e.what() << '\n';
+      exit(1);
     }
+  } while (player_count < 2);
+}
+
+void Game::startGame() {
+    std::cout << "Booting up the game.\n";
+    gameStatus();
+    characterSelection();
+
 
     players[0].useSpecialAbility();
     players[1].useSpecialAbility();
+    gameStatus();
     players[0].useBasicAttack();
     players[1].useBasicAttack();
+    gameStatus();
 }

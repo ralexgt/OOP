@@ -8,6 +8,8 @@ public:
     explicit Swordsman(std::string name);
     void specialAbility() const override;
     void basicAttack() const override;
+
+    std::shared_ptr<Character> clone() const override;
 };
 
 #endif // SWORDSMAN_H
