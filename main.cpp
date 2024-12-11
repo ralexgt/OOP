@@ -11,6 +11,7 @@
 int main() {
     try {
         const DemoGame game;
+        game.displayGame();
         game.startGame();
 
     } catch (const InvalidGameState& e) {
