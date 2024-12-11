@@ -17,6 +17,5 @@ int main() {
     } catch (const InvalidGameState& e) {
         std::cerr << "Error: " << e.what() << "\n";
     }
-
     return 0;
 }
