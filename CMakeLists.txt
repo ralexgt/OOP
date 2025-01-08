@@ -45,12 +45,12 @@ include(cmake/Options.cmake)
 add_executable(${PROJECT_NAME}
         main.cpp
         generated/src/Helper.cpp
-        Character.cpp
-        Archer.cpp
-        Mage.cpp
-        Swordsman.cpp
-        Player.cpp
-        Game.cpp
+        generated/src/Character.cpp
+        generated/src/Archer.cpp
+        generated/src/Mage.cpp
+        generated/src/Swordsman.cpp
+        generated/src/Player.cpp
+        generated/src/Game.cpp
 )
 
 include(cmake/CompilerFlags.cmake)

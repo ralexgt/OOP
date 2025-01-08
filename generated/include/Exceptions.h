@@ -5,7 +5,7 @@
 #include <string>
 #include <utility>
 
-/// Base exception to derive all other exceptions from
+// Base exception to derive all other exceptions from
 class BaseGameException : public std::exception {
 public:
     const char* what() const noexcept override {

@@ -83,8 +83,8 @@ a își regenera o parte din viață și resurse (în acest exemplu mana).
 - [x] funcții și atribute `static`
 - [x] STL
 - [x] cât mai multe `const`
-- [ ] funcții *de nivel înalt*, de eliminat cât mai mulți getters/setters/funcții low-level
-- [ ] tag de `git`: de exemplu `v0.2`
+- [x] funcții *de nivel înalt*, de eliminat cât mai mulți getters/setters/funcții low-level
+- [x] tag de `git`: de exemplu `v0.2`
 
 ## Milestone #3
 

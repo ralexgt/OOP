@@ -1,15 +1,16 @@
-#ifndef ARCHER_H
-#define ARCHER_H
+#ifndef MAGE_H
+#define MAGE_H
 
 #include "Character.h"
 
-class Archer final : public Character {
+class Mage final : public Character {
 public:
-    explicit Archer(std::string name);
+    explicit Mage(std::string name);
     void specialAbility() const override;
     void basicAttack() const override;
+    void heals() const override;
 
     std::shared_ptr<Character> clone() const override;
 };
 
-#endif // ARCHER_H
+#endif // MAGE_H

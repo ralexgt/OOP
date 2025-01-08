@@ -74,15 +74,42 @@ void Game::characterSelection() {
 }
 
 void Game::startGame() {
+    // setting up the game
     std::cout << "Booting up the game.\n";
     gameStatus();
     characterSelection();
-
-
-    players[0].useSpecialAbility();
-    players[1].useSpecialAbility();
     gameStatus();
-    players[0].useBasicAttack();
-    players[1].useBasicAttack();
+
+    // main gameplay of the players
+    while (players[0].getHealth() >= 0 && players[1].getHealth() >= 0) {
+      // Taking turns, player[0] first, then player[1], choose their action
+      for (int i = 0; i < 2; ++i) {
+        std::cout << players[i].getName() << ", choose your action:\n";
+        std::cout << "1. Attack\n";
+        std::cout << "2. Heal\n";
+        std::cout << "Choose your action: ";
+
+        std::string choice = "";
+        std::cin >> choice;
+
+        if (choice == "Attack") {
+          players[i].useBasicAttack();
+          players[1 - i].takeDamage(players[i].getCharDamage());
+        } else if (choice == "Heal") {
+          players[i].heal();
+        } else {
+          std::cout << "Invalid choice! Turn skipped.\n";
+        }
+    }
+    // at the end of each turn, the current game state is displayed
     gameStatus();
+  }
+  // resolution of the game
+  if (players[0].getHealth() > players[1].getHealth()) {
+    std::cout << "THE WINNER IS " << players[0].getName() << "! Congratulations!\n";
+  } else if (players[0].getHealth() == players[1].getHealth()) {
+    std::cout << "THAT'S A DRAW! GOOD GAME TO BOTH OF YOU!\n";
+  } else {
+    std::cout << "THE WINNER IS " << players[1].getName() << "! Congratulations!\n";
+  }
 }
