@@ -92,4 +92,4 @@ a își regenera o parte din viață și resurse (în acest exemplu mana).
 - [x] 2 șabloane de proiectare (design patterns)
 - [x] o clasă șablon cu sens; minim **2 instanțieri**
   - [ ] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri
-- [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`
+- [x] tag de `git`: de exemplu `v0.3` sau `v1.0`
