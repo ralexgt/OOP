@@ -45,9 +45,9 @@ void Game::characterSelection() {
       std::cout << "\n Player " << i << " choose your name: \n";
       std::cout << "Name: ";
       std::cin >> name;
-//      if (name == "") {
-//        throw NonNullNameException();
-//      }
+      if (name == "") {
+        throw NonNullNameException();
+      }
       std::cout << name << " choose your character: \n";
       std::cout << "1. Swordsman\n";
       std::cout << "2. Archer\n";

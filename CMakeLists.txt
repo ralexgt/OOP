@@ -45,15 +45,25 @@ include(cmake/Options.cmake)
 add_executable(${PROJECT_NAME}
         main.cpp
         generated/src/Helper.cpp
+        generated/include/Helper.h
         generated/src/Character.cpp
+        generated/include/Character.h
         generated/src/Archer.cpp
+        generated/include/Archer.h
         generated/src/Mage.cpp
+        generated/include/Mage.h
         generated/src/Swordsman.cpp
+        generated/include/Swordsman.h
         generated/src/Player.cpp
+        generated/include/Player.h
         generated/src/Game.cpp
+        generated/include/Game.h
         generated/src/Action.cpp
+        generated/include/Action.h
         generated/src/Mediator.cpp
+        generated/include/Mediator.h
         generated/src/DemoGame.cpp
+        generated/include/DemoGame.h
 )
 
 include(cmake/CompilerFlags.cmake)
