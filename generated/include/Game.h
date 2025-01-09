@@ -9,6 +9,7 @@ class Game {
 private:
     static std::vector<Player<Character>> players;
 
+
 public:
     // non virtual destructor for proper cleanup
     virtual ~Game() = default;

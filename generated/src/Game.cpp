@@ -38,12 +38,11 @@ void Game::gameStatus() {
 void Game::characterSelection() {
   std::string name = "";
   std::string character_choice = "";
-  int player_count = 0;
   players.clear();
 
-  do {
+  for (int i = 0; i < 2; i++) {
     try {
-      std::cout << "\n Player " << player_count + 1 << " choose your name: \n";
+      std::cout << "\n Player " << i << " choose your name: \n";
       std::cout << "Name: ";
       std::cin >> name;
       if (name == "") {
@@ -54,26 +53,25 @@ void Game::characterSelection() {
       std::cout << "2. Archer\n";
       std::cout << "3. Mage\n";
       std::cin >> character_choice;
-      if (character_choice == "Swordsman") {
+      if (character_choice == "Swordsman" || character_choice == "swordsman" || character_choice == "1") {
         const auto swordsman = std::make_shared<Swordsman>(name);
         players.push_back(Player(name, swordsman->clone()));
-      } else if (character_choice == "Archer") {
+
+      } else if (character_choice == "Archer" || character_choice == "archer" || character_choice == "2") {
         const auto archer = std::make_shared<Archer>(name);
         players.push_back(Player(name, archer->clone()));
-      } else if (character_choice == "Mage") {
+      } else if (character_choice == "Mage" || character_choice == "mage" || character_choice == "3") {
         const auto archer = std::make_shared<Mage>(name);
         players.push_back(Player(name, archer->clone()));
       } else {
         throw InvalidCharacterException();
       }
-      player_count++;
     } catch (const BaseGameException& e) {
       std::cerr << e.what() << '\n';
       players.clear();
-      player_count = 0;
       exit(0);
     }
-  } while (player_count < 2);
+  }
 }
 
 void Game::startGame() {

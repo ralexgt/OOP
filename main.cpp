@@ -1,11 +1,6 @@
-#include "Archer.h"
-#include "Mage.h"
-#include "Swordsman.h"
-#include "Player.h"
 #include "Game.h"
 #include "DemoGame.h"
 #include "Exceptions.h"
-#include <memory>
 #include <iostream>
 
 int main() {
