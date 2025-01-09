@@ -45,9 +45,9 @@ void Game::characterSelection() {
       std::cout << "\n Player " << i << " choose your name: \n";
       std::cout << "Name: ";
       std::cin >> name;
-      if (name == "") {
-        throw NonNullNameException();
-      }
+//      if (name == "") {
+//        throw NonNullNameException();
+//      }
       std::cout << name << " choose your character: \n";
       std::cout << "1. Swordsman\n";
       std::cout << "2. Archer\n";
@@ -86,7 +86,7 @@ void Game::startGame() {
     Mediator mediator(players[0], players[1]);
 
     // main gameplay of the players
-    while (players[0].getHealth() >= 0 && players[1].getHealth() >= 0) {
+    while (players[0].getHealth() > 0 && players[1].getHealth() > 0) {
       // Taking turns, player[0] first, then player[1], choose their action
       for (int i = 0; i < 2; ++i) {
         std::cout << players[i].getName() << ", choose your action:\n";
