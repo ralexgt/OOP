@@ -51,6 +51,8 @@ add_executable(${PROJECT_NAME}
         generated/src/Swordsman.cpp
         generated/src/Player.cpp
         generated/src/Game.cpp
+        generated/src/Action.cpp
+        generated/src/Mediator.cpp
 )
 
 include(cmake/CompilerFlags.cmake)

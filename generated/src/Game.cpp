@@ -4,6 +4,8 @@
 #include "Swordsman.h"
 #include "Archer.h"
 #include "Mage.h"
+#include "Action.h"
+#include "Mediator.h"
 
 #include <iostream>
 
@@ -75,10 +77,14 @@ void Game::characterSelection() {
 
 void Game::startGame() {
     // setting up the game
-    std::cout << "Booting up the game.\n";
     gameStatus();
+
+    // Select players[0] and players[1]
     characterSelection();
     gameStatus();
+
+    // Mediator to deal with actions between players
+    Mediator mediator(players[0], players[1]);
 
     // main gameplay of the players
     while (players[0].getHealth() >= 0 && players[1].getHealth() >= 0) {
@@ -92,18 +98,11 @@ void Game::startGame() {
         std::string choice = "";
         std::cin >> choice;
 
-        if (choice == "Attack") {
-          players[i].useBasicAttack();
-          players[1 - i].takeDamage(players[i].getCharDamage());
-        } else if (choice == "Heal") {
-          players[i].heal();
-        } else {
-          std::cout << "Invalid choice! Turn skipped.\n";
-        }
-    }
+        mediator.performAction(players[i], choice);
+	  }
     // at the end of each turn, the current game state is displayed
     gameStatus();
-  }
+    }
   // resolution of the game
   if (players[0].getHealth() > players[1].getHealth()) {
     std::cout << "THE WINNER IS " << players[0].getName() << "! Congratulations!\n";
