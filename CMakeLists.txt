@@ -53,6 +53,7 @@ add_executable(${PROJECT_NAME}
         generated/src/Game.cpp
         generated/src/Action.cpp
         generated/src/Mediator.cpp
+        generated/src/DemoGame.cpp
 )
 
 include(cmake/CompilerFlags.cmake)

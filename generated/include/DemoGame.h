@@ -9,9 +9,7 @@
 
 class DemoGame final : public Game {
 public:
-  void display() const override {
-    std::cout << "Demo game started!\n";
-  }
+  void display() const override;
 };
 
 

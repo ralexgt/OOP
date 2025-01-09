@@ -7,13 +7,13 @@
 
 class Game {
 private:
-    static std::vector<Player> players;
+    static std::vector<Player<Character>> players;
 
 public:
     // non virtual destructor for proper cleanup
     virtual ~Game() = default;
 
-    void addPlayer(const Player& player);
+    void addPlayer(const Player<Character>& player);
     static void characterSelection();
     static void startGame();
     static void gameStatus();

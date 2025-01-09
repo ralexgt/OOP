@@ -9,20 +9,20 @@
 // Abstract base class for actions
 class Action {
 public:
-  virtual void execute(Player& self, Player& opponent) = 0;
+  virtual void execute(Player<Character>& self, Player<Character>& opponent) = 0;
   virtual ~Action() = default;
 };
 
 // Concrete class for attack action
 class AttackAction : public Action {
 public:
-  void execute(Player& self, Player& opponent) override;
+  void execute(Player<Character>& self, Player<Character>& opponent) override;
 };
 
 // Concrete class for heal action
 class HealAction : public Action {
 public:
-  void execute(Player& self, Player& opponent) override;
+  void execute(Player<Character>& self, Player<Character>& opponent) override;
 };
 
 #endif //ACION_H

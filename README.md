@@ -1,7 +1,7 @@
 # 1v1 duel
 
 ## Descriere proiect
-1v1 duel este un joc tip duel turn based între 2 jucători. Fiecare jucător își alege caracterul și  se folosește de atacurile
+1v1 duel este un joc tip duel turn based între 2 jucători. Fiecare jucător își alege caracterul și  se folosește de actiunile
 acestuia cât de bine poate pentru a câștiga duelul.
 
 ## Descriere tehnica
@@ -89,7 +89,7 @@ a își regenera o parte din viață și resurse (în acest exemplu mana).
 ## Milestone #3
 
 #### Cerințe
-- [ ] 2 șabloane de proiectare (design patterns)
+- [x] 2 șabloane de proiectare (design patterns)
 - [ ] o clasă șablon cu sens; minim **2 instanțieri**
   - [ ] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri
 - [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`

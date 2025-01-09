@@ -2,14 +2,14 @@
 #include "Action.h"
 
 
-Mediator::Mediator(Player& p0, Player& p1) : player0(p0), player1(p1) {}
+Mediator::Mediator(Player<Character>& p0, Player<Character>& p1) : player0(p0), player1(p1) {}
 
 // Mediaton Design Pattern Implementation of the mediation between
 // the 2 players' actions
-void Mediator::performAction(Player& self, std::string choice) {
+void Mediator::performAction(Player<Character>& self, std::string choice) {
   // self is always the player that takes the action
   // decide which one of the player0 and player1 is NOT self
-  Player& opponent = (&self == &player0) ? player1 : player0;
+  Player<Character>& opponent = (&self == &player0) ? player1 : player0;
 
   // Use the Strategy Design Pattern from Action to select the action
   // store the chosen action

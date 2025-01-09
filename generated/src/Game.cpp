@@ -6,10 +6,11 @@
 #include "Mage.h"
 #include "Action.h"
 #include "Mediator.h"
+#include "Character.h"
 
 #include <iostream>
 
-std::vector<Player> Game::players;
+std::vector<Player<Character>> Game::players;
 
 Game& Game::operator=(Game& other) {
   swap(*this, other);

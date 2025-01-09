@@ -2,6 +2,7 @@
 #define MEDIATOR_H
 
 #include "Player.h"
+#include "Character.h"
 #include <iostream>
 
 // Implementing the Mediator Design Pattern
@@ -9,13 +10,13 @@
 // forces them to collaborate only via a mediator object (refactoring.guru)
 class Mediator {
 private:
-  Player& player0;
-  Player& player1;
+  Player<Character>& player0;
+  Player<Character>& player1;
 
 public:
-  Mediator(Player& p0, Player& p1);
+  Mediator(Player<Character>& p0, Player<Character>& p1);
 
-  void performAction(Player& self, std::string choice);
+  void performAction(Player<Character>& self, std::string choice);
 };
 
 #endif // MEDIATOR_H

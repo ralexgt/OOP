@@ -1,33 +1,45 @@
 #include "Player.h"
 
-Player::Player(std::string name, std::shared_ptr<Character> character)
-    : name(std::move(name)), character(std::move(character)) {}
+//template <typename CharacterType>
+//Player<CharacterType>::Player(std::string name, std::shared_ptr<CharacterType> character)
+//    : name(std::move(name)), character(std::move(character)) {}
 
-void Player::useSpecialAbility() const {
-  character->specialAbility();
-}
-void Player::useBasicAttack() const {
-  character->basicAttack();
-}
 
-const std::string& Player::getName() const {
-  return name;
-}
+//template <typename CharacterType>
+//void Player<CharacterType>::useSpecialAbility() const {
+//  character->specialAbility();
+//}
+//template <typename CharacterType>
+//void Player<CharacterType>::useBasicAttack() const {
+//  character->basicAttack();
+//}
 
-float Player::getHealth() const {
-  return character->getHealth();
-}
-float Player::getMana() const {
-  return character->getMana();
-}
-float Player::getCharDamage() const {
-  return character->getDamage();
-}
+//template <typename CharacterType>
+//const std::string& Player<CharacterType>::getName() const {
+//  return name;
+//}
 
-void Player::takeDamage(const float damage) {
-  character->takeDamage(damage);
-}
+//template <typename CharacterType>
+//float Player<CharacterType>::getHealth() const {
+//  return character->getHealth();
+//}
 
-void Player::heal() {
-  character->heal();
-}
+//template <typename CharacterType>
+//float Player<CharacterType>::getMana() const {
+//  return character->getMana();
+//}
+
+//template <typename CharacterType>
+//float Player<CharacterType>::getCharDamage() const {
+//  return character->getDamage();
+//}
+
+//template <typename CharacterType>
+//void Player<CharacterType>::takeDamage(const float damage) {
+//  character->takeDamage(damage);
+//}
+
+//template <typename CharacterType>
+//void Player<CharacterType>::heal() {
+//  character->heal();
+//}
