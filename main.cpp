@@ -1,7 +1,7 @@
-#include "Game.h"
-#include "DemoGame.h"
-#include "Exceptions.h"
 #include <iostream>
+#include <Game.h>
+#include <DemoGame.h>
+#include <Exceptions.h>
 
 int main() {
     try {
